@@ -1,6 +1,7 @@
 #include "FileSystemClass.h"
 #include "NTFS_class.h"
 #include "FAT32_class.h"
+#include "ExFAT_class.h"
 
 // ---------------------------------------------------------------------------
 FileSystemClass::FileSystemClass( )
@@ -55,6 +56,9 @@ FileSystemClass * FileSystemClass::GetFileSystem( FsType fsType )
 		break;
 	case FAT32:
 		p = new FAT32_class( );
+		break;
+	case ExFAT:
+		p = new ExFAT_class( );
 		break;
 	default:
 		p = NULL;

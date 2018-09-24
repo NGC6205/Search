@@ -11,7 +11,7 @@ using namespace std;
 // ---------------------------------------------------------------------------
 enum FsType
 {
-	NTFS, FAT32
+	NTFS, FAT32, ExFAT
 };
 // ---------------------------------------------------------------------------
 #pragma pack(push, 1)
@@ -77,6 +77,27 @@ typedef struct
 	BYTE padding3[ 420 ];
 	BYTE siganture[ 2 ];
 } bootFAT32;
+#pragma pack(pop)
+// ---------------------------------------------------------------------------
+#pragma pack(push, 1)
+typedef struct
+{
+	BYTE machInstruction[ 3 ];
+	BYTE OEMName[ 8 ];
+	BYTE padding[ 61 ];
+	ULONGLONG countOfSectors;
+	UINT32 sectorOfFAT;
+	UINT32 sizeOfFAT;
+	UINT32 sectorOfBitmap;
+	UINT32 countOfCluster;
+	UINT32 clusterOfRoot;
+	UINT32 numberOfVolume;
+	BYTE padding2[ 4 ];
+	BYTE sizeOfSector;
+	BYTE clusterMlt;
+	BYTE padding3[ 400 ];
+	BYTE signature[ 2 ];
+} bootExFAT;
 #pragma pack(pop)
 // ---------------------------------------------------------------------------
 typedef struct
