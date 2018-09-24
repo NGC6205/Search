@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.509,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\Iterator.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.246,=C:\Users\Dmitry\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.422,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\FileSystemClass.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.852,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\NTFSClusterIterator.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.777,C:\Users\Dmitry\Documents\RAD Studio\Projects\Project1.cbproj=C:\Users\Dmitry\Documents\RAD Studio\Projects\VirtualStringTreeTest2\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.751,C:\Users\Dmitry\Documents\RAD Studio\Projects\Unit1.cpp=C:\Users\Dmitry\Documents\RAD Studio\Projects\VirtualStringTreeTest2\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.716,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\IteratorThread.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.690,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\FAT16_class.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.732,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\RangeDecorator.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.751,C:\Users\Dmitry\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Dmitry\Documents\RAD Studio\Projects\VirtualStringTreeTest2\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.716,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\FAT32ClusterIterator.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.699,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\FAT16ClusterIterator.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.268,C:\Users\Dmitry\Documents\RAD Studio\Projects\Project1PCH1.h=C:\Users\Dmitry\Documents\RAD Studio\Projects\VirtualStringTreeTest2\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.232,=C:\Users\Dmitry\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.871,=C:\Users\xenum\Documents\Embarcadero\Studio\Projects\VrST\Virtual-TreeView\Source\VirtualTrees.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.723,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\NTFS_class.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.011,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\IndexIterator.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.282,=C:\Users\Student\Documents\Embarcadero\Studio\Projects\VrST\Virtual-TreeView\Source\VirtualTrees.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.745,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\Structures.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.738,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\SearchThread.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.013,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\IteratorDecorator.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.707,=D:\Data\5й курс 2й семестр\ИБТС (программирование)\Лабы\4 Мижиевский Skan\VirtualStringTreeTest2\FAT32_class.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.751,C:\Users\Dmitry\Documents\RAD Studio\Projects\Unit1.h=C:\Users\Dmitry\Documents\RAD Studio\Projects\VirtualStringTreeTest2\Unit1.h</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="..\..\..\..\Student"/>
+    <File Path="..\..\..\Documents"/>
+    <File Path="..\..\..\Documents\Embarcadero"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio\Projects"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio\Projects\VrST"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio\Projects\VrST\Virtual-TreeView"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio\Projects\VrST\Virtual-TreeView\Source"/>
+    <File Path="..\..\..\Documents\Embarcadero\Studio\Projects\VrST\Virtual-TreeView\Source\VirtualTrees.hpp"/>
+    <File Path="FileSystemClass.cpp"/>
+    <File Path="FileSystemClass.cpp"/>
+    <File Path="FileSystemClass.h"/>
+    <File Path="Iterator.h"/>
+    <File Path="IteratorThread.cpp"/>
+    <File Path="IteratorThread.cpp"/>
+    <File Path="IteratorThread.h"/>
+    <File Path="NTFS_class.cpp"/>
+    <File Path="NTFS_class.cpp"/>
+    <File Path="NTFS_class.h"/>
+    <File Path="Project1.cpp"/>
+    <File Path="Project1PCH1.h"/>
+    <File Path="SearchThread.cpp"/>
+    <File Path="SearchThread.cpp"/>
+    <File Path="SearchThread.h"/>
+    <File Path="Structures.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="RangeDecorator.cpp"/>
+    <File Path="RangeDecorator.cpp"/>
+    <File Path="RangeDecorator.h"/>
+    <File Path="IteratorDecorator.h"/>
+    <File Path="FAT32_class.cpp"/>
+    <File Path="FAT32_class.cpp"/>
+    <File Path="FAT32_class.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

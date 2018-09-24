@@ -1,15 +1,14 @@
-#include "FAT32_class.h"
-
+#include "ExFAT_class.h"
+#include "ExFATClusterIterator.h"
 
 // ---------------------------------------------------------------------------
-FAT32_class::FAT32_class( ) : FileSystemClass( )
+ExFAT_class::ExFAT_class( ) : FileSystemClass( )
 {
-	BytesPerReservedArea = 0;
-	BytesPerCopiesFAT = 0;
+	SectorOfBitmap = 0;
 }
 
 // ---------------------------------------------------------------------------
-bool FAT32_class::ReadBootSector( )
+bool ExFAT_class::ReadBootSector( )
 {
 	if ( FileHandle == 0 || FileHandle == INVALID_HANDLE_VALUE )
 	{
@@ -37,48 +36,43 @@ bool FAT32_class::ReadBootSector( )
 		//MessageBoxW( NULL, L"Ошибка чтения файла", L"Ошибка", MB_OK );
 		return false;
 	}
-	bootFAT32 * pBootFAT32;
-	pBootFAT32 = ( bootFAT32 * ) BootSector;
-	OEMName.assign( ( char * ) pBootFAT32->markOfTypeFS, 8 );
-	if ( OEMName == "\x46\x41\x54\x33\x32\x20\x20\x20" )
+	bootExFAT * pBootExFAT;
+	pBootExFAT = ( bootExFAT * ) BootSector;
+	OEMName.assign( ( char * ) pBootExFAT->OEMName, 8 );
+	if ( OEMName == "\x45\x58\x46\x41\x54\x20\x20\x20" )
 	{
-		BytesPerReservedArea = pBootFAT32->reservedArea * pBootFAT32->bytesPerSector;
-		BytesPerCopiesFAT = pBootFAT32->sizeOfCopiesFAT32 * pBootFAT32->countOfCopiesFAT * pBootFAT32->bytesPerSector;
-		BytesPerCluster = pBootFAT32->bytesPerSector * pBootFAT32->sectorPerClusterMlt;
-		BeginCluster = 2;
-
-		if ( pBootFAT32->countOfSectors16 == 0 )
-		{
-			TotalClusters = pBootFAT32->countOfSectors32 / pBootFAT32->sectorPerClusterMlt;
-		}
-		else
-		{
-			TotalClusters = pBootFAT32->countOfSectors16 / pBootFAT32->sectorPerClusterMlt;
-		}
+		SectorOfBitmap = pBootExFAT->sectorOfBitmap;
+		BytesPerCluster = ( 1 << pBootExFAT->sizeOfSector ) * ( 1 << pBootExFAT->clusterMlt );
+		TotalClusters = pBootExFAT->countOfCluster;
+		BeginCluster = 0;
 		return true;
 	}
 	else
 	{
-		//MessageBoxW( NULL, L"Файловая система раздела не FAT32", L"Ошибка", MB_OK );
+		//MessageBoxW( NULL, L"Файловая система раздела не ExFAT", L"Ошибка", MB_OK );
 		return false;
 	}
+
 }
 
 // ---------------------------------------------------------------------------
-Iterator < ClusterDisk > * FAT32_class::GetClusterIterator( )
+IndexIterator < ClusterDisk > * ExFAT_class::GetClusterIterator( )
 {
-	return new FAT32ClusterIterator( this );
+	return new ExFATClusterIterator( this );
 }
-//в родительский класс
+
 // ---------------------------------------------------------------------------
-bool FAT32_class::ReadCluster(	ULONGLONG startCluster,	DWORD     numberOfCluster,	BYTE *    outBuffer )
+bool ExFAT_class::ReadCluster(
+	ULONGLONG startCluster,
+	DWORD     numberOfCluster,
+	BYTE *    outBuffer )
 {
 	if ( FileHandle == 0 || BytesPerCluster == 0 )
 	{
 		//MessageBoxW( NULL, L"Ошибка раздел не был открыт или открыт неверно", L"Ошибка", MB_OK );
 		return false;
 	}
-	ULONGLONG StartOffset = BytesPerReservedArea + BytesPerCopiesFAT + BytesPerCluster * ( startCluster - BeginCluster );
+	ULONGLONG StartOffset = 512 * SectorOfBitmap - 2 * BytesPerCluster + BytesPerCluster * startCluster;
 	DWORD BytesToRead = BytesPerCluster * numberOfCluster;
 	DWORD BytesRead;
 	LARGE_INTEGER SectorOffset;
@@ -102,9 +96,9 @@ bool FAT32_class::ReadCluster(	ULONGLONG startCluster,	DWORD     numberOfCluster
 	return true;
 
 }
-// ---------------------------------------------------------------------------
-// ------------------------------------------------------------------------------
-FAT32ClusterIterator::FAT32ClusterIterator( FAT32_class * fileSystem )
+
+// -----------------------------------ClusterIterator----------------------------
+ExFATClusterIterator::ExFATClusterIterator( ExFAT_class * fileSystem )
 {
 	FileSystem = fileSystem;
 	CurrentCluster = FileSystem->GetBeginCluster( );
@@ -113,26 +107,26 @@ FAT32ClusterIterator::FAT32ClusterIterator( FAT32_class * fileSystem )
 }
 
 // ------------------------------------------------------------------------------
-void FAT32ClusterIterator::First( )
+void ExFATClusterIterator::First( )
 {
 	CurrentCluster = FileSystem->GetBeginCluster( );
 }
 
 // ------------------------------------------------------------------------------
-void FAT32ClusterIterator::Next( )
+void ExFATClusterIterator::Next( )
 {
 	CurrentCluster++ ;
 }
 
 // ------------------------------------------------------------------------------
-bool FAT32ClusterIterator::IsDone( ) const
+bool ExFATClusterIterator::IsDone( ) const
 {
 	int TotalClusters = FileSystem->GetTotalClusters( );
 	return ( CurrentCluster >= TotalClusters );
 }
 
 // ------------------------------------------------------------------------------
-ClusterDisk FAT32ClusterIterator::GetCurrent( )
+ClusterDisk ExFATClusterIterator::GetCurrent( )
 {
 	FileSystem->ReadCluster( CurrentCluster, 1, DataBuffer );
 	Cluster.assign( DataBuffer, DataBuffer + BytesPerCluster );
@@ -140,13 +134,13 @@ ClusterDisk FAT32ClusterIterator::GetCurrent( )
 }
 
 // ------------------------------------------------------------------------------
-FAT32ClusterIterator::~FAT32ClusterIterator( )
+ExFATClusterIterator::~ExFATClusterIterator( )
 {
 	delete[ ]DataBuffer;
 }
 
 // ------------------------------------------------------------------------------
-int FAT32ClusterIterator::GetCurrentIndex( ) const
+int ExFATClusterIterator::GetCurrentIndex( ) const
 {
 	return CurrentCluster;
 }
